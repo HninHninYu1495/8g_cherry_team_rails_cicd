@@ -1,7 +1,7 @@
 {
 	"AWSEBDockerrunVersion": "1",
 	"Image": {
-		"Name": "ECR Repositories URL/Image tag"
+		"Name": "867431803138.dkr.ecr.us-east-1.amazonaws.com/8g-cherry-team-rails-cicd:latest"
 	},
 	"Ports": [
 		{
