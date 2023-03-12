@@ -4,6 +4,8 @@ jobs:
   test_rails:
     docker:
       - image: cimg/ruby:3.2.0
+      environment:
+        RAILS_ENV: test
 
     working_directory: ~/8g_cherry_team_rails_cicd
 
@@ -31,8 +33,6 @@ jobs:
 
       - run:
           command: bundle exec rails db:migrate
-          environment:
-            RAILS_ENV: test
           working_directory: ~/8g_cherry_team_rails_cicd
 
       # run tests
@@ -94,10 +94,10 @@ workflows:
   test_build_deploy:
     jobs:
       - test_rails
-      # - build_and_push:
-      #     requires:
-      #       - test_rails
-      # - deploy:
-      #     requires:
-      #       - test_rails
-      #       - build_and_push
+      - build_and_push:
+          requires:
+            - test_rails
+      - deploy:
+          requires:
+            - test_rails
+            - build_and_push
